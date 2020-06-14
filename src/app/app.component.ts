@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService} from "./services-injectables/service-login"
-import { Router } from '@angular/router';
-
-
 @Component({ //decorador
   selector: 'app-root', 
   templateUrl: './app.component.html',
@@ -10,7 +6,7 @@ import { Router } from '@angular/router';
 })
 
 
-
+//Primer componente que lee Angular n_n, es utilizado para cargar los selectores princiapales
 export class AppComponent implements OnInit{ 
   
    constructor() {

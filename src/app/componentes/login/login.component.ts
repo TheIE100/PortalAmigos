@@ -12,8 +12,7 @@ export class LoginComponent implements OnInit { //clase componente que puede ser
   //al archivo app.modulte.ts y
   // hereda de onInit (importante para el ciclo de vida)
   texto_bienvenida:string = "¡Bienvenido al portal de amigos!";
-  listaAmigosAsincrono:any;
-
+  se_obtuvo_amigos:any;
 
   constructor(private router:Router, //router lo recibes definiendolo en app.routes.ts...
     public loginService : LoginService) { }
@@ -28,7 +27,7 @@ export class LoginComponent implements OnInit { //clase componente que puede ser
 
   }
   else{
-    this.listaAmigosAsincrono = this.loginService.getListaDeAmigos(usuario,password);
+    this.se_obtuvo_amigos = this.loginService.getListaDeAmigos(usuario,password);
     /*new Promise( (resolve, reject) => {
       this.loginService.getListaDeAmigos(usuario,password).subscribe(  //suscribe se utiliza para peticiones a servidor, si fuera un servicio generico no es necesario (para algun calculo o algo)
         plataformas => {
@@ -37,26 +36,13 @@ export class LoginComponent implements OnInit { //clase componente que puede ser
         }
       )
     })*/
-
-    if(this.listaAmigosAsincrono[0].nombre != "efe_no_pudiste_iniciar_sesion_huehuehue_401"){ 
-
-      this.router.navigate(['/mostrarAmigos']); //aqui es como usar el routerlink (te redirecciona) (r)     
+    if(this.se_obtuvo_amigos){ 
+      this.router.navigate(['/mostrarAmigos']); //la lista de amigos se va ver gracias al servicio LoginService que amigosComponent tambien consume n_n
     }
     else{
-      console.log(this.listaAmigosAsincrono);
+      console.log(this.se_obtuvo_amigos);
       swal("F","No iniciaste sesión correctamente, favor de intentarlo nuevamente","info");
     }
-
-    /*this.router.params.subscribe(params => {
-      this.respuestaLogin = this.loginService.getListaDeAmigos(usuario,password);
-      if(this.respuestaLogin){
-        alert("Inicio de sesión exitoso");          
-      }
-      else{
-        alert("F: No iniciaste sesión correctamente");
-      }
-      console.log(this.respuestaLogin);
-    })*/
   }
 
   

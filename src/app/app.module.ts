@@ -27,7 +27,7 @@ import { LoginComponent } from './componentes/login/login.component';
     APP_ROUTING,
     HttpClientModule
   ],
-  providers: [LoginService],  //aqui van los servicios web
+  providers: [LoginService],  //aqui van los servicios web o servicios locales
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA] //PARA QUE PERMITA UTILIZAR CIERTOS FORMATOS DE HTML EN ANGULAR..
 })
