@@ -11,12 +11,14 @@ import { HttpClientModule } from '@angular/common/http'; //modulo para poder con
 import { LoginService } from './services-injectables/service-login';
 //COMPONENTES
 import { AppComponent } from './app.component';
+import { AmigosComponent } from './componentes/amigos/amigos.component';
+import { LoginComponent } from './componentes/login/login.component';
 
 @NgModule({ //decorador general padre de toda la app web
   declarations: //todo aque componente que se incluya en la lista de
   // declaraciones y bootstrap, podrán usarse en cualquier lado de la app web.
   [ 
-    AppComponent
+    AppComponent, AmigosComponent, LoginComponent
   ],
   imports: [
     BrowserModule,
