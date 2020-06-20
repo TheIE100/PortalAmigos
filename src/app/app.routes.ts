@@ -4,14 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './componentes/login/login.component';
 import { AmigosComponent} from './componentes/amigos/amigos.component';
-
+import {PrivilegesGuard } from './services-injectables/service-PrivilegesGuard'
 
 const APP_ROUTES: Routes = [
 
   //Se inicializan todas las rutas que vamos a utilizar.  (importante definir etiqueta router-outlet)
   
   { path: 'login', component: LoginComponent },
-  { path: 'mostrarAmigos', component: AmigosComponent},
+  { path: 'mostrarAmigos', component: AmigosComponent, canActivate: [PrivilegesGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'login' }
 
 ];

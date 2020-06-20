@@ -9,11 +9,9 @@ import { Component, OnInit } from '@angular/core';
 //Primer componente que lee Angular n_n, es utilizado para cargar los selectores princiapales
 export class AppComponent implements OnInit{ 
   
-   constructor() {
-
-   }
-
-  
-    ngOnInit(){ 
-    }
+      constructor() {
+     }
+      ngOnInit(){ 
+          
+      }
 }

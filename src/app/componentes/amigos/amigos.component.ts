@@ -11,10 +11,13 @@ export class AmigosComponent implements OnInit {
 
   constructor(public loginService : LoginService) { 
     console.log(this.loginService.listaAmigosInstancia); //de esta forma recibimos lista de amigos mediante el servicio
+
+  
   }
 
   ngOnInit(): void {
       swal("Iniciaste sesión correctamente", "¡Felicidades!", "success");
+      
 
   }
 
