@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService} from "../../services-injectables/service-login"
 import { Router } from '@angular/router';
 import { ServiceLocalStorage } from 'src/app/services-injectables/service-Observador-LocalStorage';
+import { ServiceBloquearNavAtrasService } from 'src/app/services-injectables/service-bloquear-nav-atras.service';
+
 declare let swal: any; //para que el compilador de angular no se esté quejando de que no existe este metodo...
 declare var jQuery:any; //para indicarle a angular que utilizaré jQuery..
 
@@ -19,14 +21,19 @@ export class LoginComponent implements OnInit { //clase componente que puede ser
   se_obtuvo_amigos:boolean;
   peticion_activa:boolean;
 
+  usuarioMaster:string = "emmanuel";
+  passMaster:string = "twitch123";
+
   constructor(private router:Router, //router lo recibes definiendolo en app.routes.ts...
     public loginService : LoginService,
-    public lsObservador : ServiceLocalStorage) {
+    public lsObservador : ServiceLocalStorage,
+    public bloqueoServicio: ServiceBloquearNavAtrasService) {
       this.se_obtuvo_amigos = false;
-      this.peticion_activa = false;
+      this.peticion_activa = false;;
      }
 
   ngOnInit(): void {
+    this.bloqueoServicio.bloquearAtras();
   
   }
   iniciarSesion(usuario:string, 
@@ -56,11 +63,6 @@ export class LoginComponent implements OnInit { //clase componente que puede ser
         })*/
         if(this.se_obtuvo_amigos){ 
           this.lsObservador.setSesionActiva("true");
-                              //para evitar que le hagan back...(funciona en firefox)
-                              window.history.pushState(null, "", window.location.href);
-                              window.onpopstate = function () {
-                                  window.history.pushState(null, "", window.location.href);
-                              };
           this.router.navigate(['/mostrarAmigos']); //la lista de amigos se va ver gracias al servicio LoginService que amigosComponent tambien consume n_n
         }
         else{

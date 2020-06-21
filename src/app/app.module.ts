@@ -6,11 +6,13 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //MODULO PARA EL MANEJO DE FORMULARIOS!!
 import { APP_ROUTING } from './app.routes'; //gestionador de rutas que tendra nuestra aplicacion web...
 import { HttpClientModule } from '@angular/common/http'; //modulo para poder consumir servicios.
-//FIN DE IMPORTACONES MANUELES PROYECXTOS
 
-//SERVICIOS que se deben de importar
+//SERVICIOS que se deben de importar de forma manual
 import { LoginService } from './services-injectables/service-login';
-import {PrivilegesGuard } from './services-injectables/service-PrivilegesGuard'
+import {PrivilegesGuard } from './services-injectables/service-PrivilegesGuard';
+import { ServiceBloquearNavAtrasService}  from  './services-injectables/service-bloquear-nav-atras.service';
+
+//FIN DE IMPORTACONES MANUELES PROYECXTOS
 
 
 //COMPONENTES
@@ -32,7 +34,7 @@ import { HeaderComponent } from './componentes/shared/header/header.component';
     APP_ROUTING,
     HttpClientModule
   ],
-  providers: [LoginService,PrivilegesGuard ],  //aqui van los servicios web o servicios locales (si no, no jalan)
+  providers: [LoginService,PrivilegesGuard, ServiceBloquearNavAtrasService ],  //aqui van los servicios web o servicios locales (si no, no jalan)
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA] //PARA QUE PERMITA UTILIZAR CIERTOS FORMATOS DE HTML EN ANGULAR..
 })

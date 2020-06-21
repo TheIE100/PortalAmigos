@@ -18,10 +18,10 @@
           <form>
               <!--Todo lo que recolectera datos del usuario se debe de poner en un form -->
               <div class="form-group has-feedback">
-                  <input #txt_user id="txt_user" name="id" type="text" placeholder="Ingresa tu Id de usuario" autocomplete="off" required="required" class="form-control" style="border:1px solid black;" />
+                  <input #txt_user id="txt_user" name="id" value="{{usuarioMaster}}" type="text" placeholder="Ingresa tu Id de usuario" autocomplete="off" required="required" class="form-control" style="border:1px solid black;" />
               </div>        <br />
               <div class="form-group has-feedback">
-                  <input #txt_Contrasenia id="txt_Contrasenia" name="contrasenia" type="password" placeholder="Contraseña" required="required" class="form-control" style="border:1px solid black;" />
+                  <input #txt_Contrasenia id="txt_Contrasenia" value="{{passMaster}}" name="contrasenia" type="password" placeholder="Contraseña" required="required" class="form-control" style="border:1px solid black;" />
               </div>
               <br />
               <center>

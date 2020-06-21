@@ -1,15 +1,13 @@
-
-  <!-- Resources  (LO UTILIZARÉ PARA EL TEMA DE LAS TARJETAS DE AMIGOS DE TWITCH) -->
     <h2>Tu lista de amigos</h2>
-    
     <div class="card-container">
-      <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
-            <p><b>Prueba</b></p>
-        </a>
-        <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
-            <p><b>Prueba</b></p>
-        </a>
-  
-     
-  
+      <div *ngFor="let amigo of amigos">
+      <div class="w3-card-4 w3-margin-left w3-margin-bottom">
+        <center><img  src="{{amigo.imagen}}" alt="Card image"></center>
+          <div class="w3-container w3-center">
+            <h4 class="card-title">{{ amigo.nombre }}</h4>
+            <a href="{{amigo.ligaTwitch}}" target="_blank" class="btn btn-primary" style="color:white;">Visita twitch</a>
+      </div>
+      <div class="col-md-2"></div>
     </div>
+
+    

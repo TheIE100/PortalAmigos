@@ -23,20 +23,27 @@ export class LoginService  {
               ligaTwitch: "https://www.twitch.tv/Ale_Gons"
             },
             {
-              nombre: "AzielDavid87",
-              imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/c334d19a-6645-468d-8597-46600537f8ce-profile_image-70x70.png",
-              ligaTwitch: "https://www.twitch.tv/azieldavid87"
+              nombre: "azieldavid0798",
+              imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/c334d19a-6645-468d-8597-46600537f8ce-profile_image-300x300.png",
+              ligaTwitch: "https://www.twitch.tv/azieldavid0798"
             },
             {
               nombre: "uziel4r53",
-              imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/7bbbbd8b-0cad-4dfb-ad94-99c4eb4ab26f-profile_image-70x70.png",
+              imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/7bbbbd8b-0cad-4dfb-ad94-99c4eb4ab26f-profile_image-300x300.png",
               ligaTwitch: "https://www.twitch.tv/uziel4r53"
             },
             {
               nombre: "watertd12",
-              imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/5f18630d-dbe0-4832-9126-c98c3b6282d2-profile_image-70x70.png",
+              imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/60d81439-9c03-4b7b-b3bf-76781c5c74d2-profile_image-300x300.png",
               ligaTwitch: "https://www.twitch.tv/watertd12"
-            }];
+            },
+            { 
+              nombre: "cloudzy_roblox",
+              imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/0e7c5503-95ac-4569-939e-987df2a3b65c-profile_image-300x300.png",
+              ligaTwitch: "https://www.twitch.tv/cloudzy_roblox"
+
+            }
+          ];
             respuesta = true;
         }
         return respuesta;    /*
