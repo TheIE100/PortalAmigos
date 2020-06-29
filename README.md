@@ -29,3 +29,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Back-End
 
 [Repo of back-end code](https://github.com/TheIE100/PortalAmigos-BackEndWebAPI)
+
+## Context Diagram and E-R Diagram.
+
+[Here!](https://app.lucidchart.com/invitations/accept/df093777-df3b-4b36-92c4-46b6dc9cd25c)
+<img src="https://i.ibb.co/6DQcNm8/Anotaci-n-2020-06-29-150226.png"/>
+
+## Master User && Password
+
+* User: i_Emmanuel
+* Pass: Twitch123.
