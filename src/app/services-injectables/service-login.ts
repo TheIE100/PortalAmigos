@@ -1,20 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpParams} from "@angular/common/http";
+import { ServiceLocalStorage } from './service-Observador-LocalStorage';
+import {  map } from 'rxjs/operators';
 
 //No es un @Component si no un @Injectable
 @Injectable()
 export class LoginService  {
   listaAmigosInstancia:any; //variable SUPER UTIL que podran consultar los componentes para obtener la información
 
+  headers: HttpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': '*/*'
+});
 
-  constructor( public httpClient:HttpClient ) {  //UTILIZA EL MODULO HTTPCLIENT PARA CONSUMIR SERVICIOS
+
+  constructor( public httpClient:HttpClient,   public lsObservador : ServiceLocalStorage ) {  //UTILIZA EL MODULO HTTPCLIENT PARA CONSUMIR SERVICIOS
     console.log('Servicio de Login Listo..');
   }
-  
-  getListaDeAmigos(usuario:string, password:string){
-        let respuesta:boolean = false;
 
+
+
+  
+  getListaDeAmigos(){
+    /*
+        let respuesta:boolean = false;
         if(usuario=="emmanuel" && password=="twitch123"){
           this.listaAmigosInstancia  = [
             {
@@ -46,14 +56,25 @@ export class LoginService  {
           ];
             respuesta = true;
         }
-        return respuesta;    /*
-  //Utilizamos template literals
-  let servicioRest = `http://localhost:8585/students/busqueda/${palabraClave}`;
-  */
-     //   return this.httpClient.get(servicioRest);  //PETICION TIPO GET!!!!!, este objeto es tipo OBSERVABLE y se regresa para que que se puedan suscribir al modulo que anda al pendiente
+        return respuesta;*/            
   }
-}
 
+  login(usuario: string, password: string){
+    const url = 'http://localhost:51001/auth/login';
+ 
+   const body = new HttpParams()
+   .set('grant_type', 'password')
+   .set('username', usuario)
+   .set('password', password);
+ 
+   return this.httpClient.post(url, body, { headers: this.headers }).pipe(
+   map( resp => {
+         this.lsObservador.setTokenUsuario(resp['access_token']);
+         return resp;
+       })
+     );
+   }
+}
 
 export interface Amigo{ //interfaz como la de java n_n, aqui declaramos esqueleto de un 'Amigo'
   nombre:string;

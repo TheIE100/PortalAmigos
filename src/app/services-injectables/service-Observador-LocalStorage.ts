@@ -13,4 +13,13 @@ export class ServiceLocalStorage { //Servicio de observador del objeto local sto
  getSesionActiva() {
    return localStorage.getItem('UsuarioActivo');
  }
+
+
+ setTokenUsuario(token: string){
+    localStorage.setItem("token",token);
+ }
+
+ getTokenUsuario(){
+    return localStorage.getItem("token");
+ }
 }
