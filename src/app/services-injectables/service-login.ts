@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { HttpParams} from "@angular/common/http";
 import { ServiceLocalStorage } from './service-Observador-LocalStorage';
 import {  map } from 'rxjs/operators';
-
+import { GlobalVariables } from '../Global';
 //No es un @Component si no un @Injectable
 @Injectable()
 export class LoginService  {
@@ -60,7 +60,7 @@ export class LoginService  {
   }
 
   login(usuario: string, password: string){
-    const url = 'http://localhost:51001/auth/login';
+    const url = `${GlobalVariables.BASE_API_URL}/auth/login`;
  
    const body = new HttpParams()
    .set('grant_type', 'password')
