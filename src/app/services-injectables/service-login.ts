@@ -4,10 +4,11 @@ import { HttpParams} from "@angular/common/http";
 import { ServiceLocalStorage } from './service-Observador-LocalStorage';
 import {  map } from 'rxjs/operators';
 import { GlobalVariables } from '../Global';
+import { Observable } from 'rxjs';
 //No es un @Component si no un @Injectable
 @Injectable()
 export class LoginService  {
-  listaAmigosInstancia:any; //variable SUPER UTIL que podran consultar los componentes para obtener la información
+  listaAmigosInstancia:any[]; //variable SUPER UTIL que podran consultar los componentes para obtener la información
 
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -22,10 +23,7 @@ export class LoginService  {
 
 
   
-  getListaDeAmigos(){
-    /*
-        let respuesta:boolean = false;
-        if(usuario=="emmanuel" && password=="twitch123"){
+  solicitar_lista_amigos() : void{  //realiza una peticion de lista de amigos al servidor y los almacena en variable de servicio que se usaran en los distintos componentes..
           this.listaAmigosInstancia  = [
             {
               nombre: "Ale_gons",
@@ -46,20 +44,11 @@ export class LoginService  {
               nombre: "watertd12",
               imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/60d81439-9c03-4b7b-b3bf-76781c5c74d2-profile_image-300x300.png",
               ligaTwitch: "https://www.twitch.tv/watertd12"
-            },
-            { 
-              nombre: "cloudzy_roblox",
-              imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/0e7c5503-95ac-4569-939e-987df2a3b65c-profile_image-300x300.png",
-              ligaTwitch: "https://www.twitch.tv/cloudzy_roblox"
-
             }
-          ];
-            respuesta = true;
-        }
-        return respuesta;*/            
+          ]; 
   }
 
-  login(usuario: string, password: string){
+  login(usuario: string, password: string) : Observable<Object>{
     const url = `${GlobalVariables.BASE_API_URL}/auth/login`;
  
    const body = new HttpParams()
@@ -69,7 +58,14 @@ export class LoginService  {
  
    return this.httpClient.post(url, body, { headers: this.headers }).pipe(
    map( resp => {
+      
+         this.lsObservador.setSesionActiva(true);
          this.lsObservador.setTokenUsuario(resp['access_token']);
+         this.solicitar_lista_amigos();
+         if(  this.listaAmigosInstancia.length == 0){
+          this.lsObservador.setSesionActiva(false);
+          this.lsObservador.setTokenUsuario("");
+         }
          return resp;
        })
      );

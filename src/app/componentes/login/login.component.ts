@@ -5,7 +5,6 @@ import { ServiceBloquearNavAtrasService } from 'src/app/services-injectables/ser
 import Swal from 'sweetalert2';
 
 declare let swal: any; //para que el compilador de angular no se esté quejando de que no existe este metodo...
-declare var jQuery:any; //para indicarle a angular que utilizaré jQuery..
 
 
 
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit { //clase componente que puede ser
   peticion_activa:boolean;
 
   usuarioMaster:string = "i_Emmanuel";
-  passMaster:string = "twitch123.";
+  passMaster:string = "Twitch123.";
 
   constructor(private router:Router, //router lo recibes definiendolo en app.routes.ts...
     public loginService : LoginService,
@@ -63,13 +62,18 @@ export class LoginComponent implements OnInit { //clase componente que puede ser
 
         this.loginService.login(usuario.trim(), password.trim()).subscribe( resp => {
         console.log(resp);
-        //this.se_obtuvo_amigos = this.loginService.getListaDeAmigos(usuario,password);
-        /*
-        if(this.se_obtuvo_amigos){ 
+        if(this.loginService.listaAmigosInstancia.length>0){
+          Swal.close();
           this.router.navigate(['/mostrarAmigos']); //la lista de amigos se va ver gracias al servicio LoginService que amigosComponent tambien consume n_n
-              Swal.close();
+          
         }
-        */
+        else{
+          this.mensaje_swal_y_habilitar_boton("Sin amigos",
+              "La cuenta no tiene amigos asignados, favor de indicarle al administrador que haga el llenado por base de datos y vuelva a intentarlo",
+              "info",
+              "Ok",
+              $event); 
+        }
         }, 
         (errorSever) => {
             console.log('Servidor respondio con error :v');
