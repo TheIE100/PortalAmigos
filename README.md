@@ -33,7 +33,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Context Diagram.
 
 
-<img src="https://i.ibb.co/6DQcNm8/Anotaci-n-2020-06-29-150226.png"/>
+<img src="https://i.ibb.co/nn7bBBS/Anotaci-n-2020-06-29-150226.png"/>
 
 ## Master User && Password
 
