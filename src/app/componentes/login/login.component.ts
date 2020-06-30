@@ -60,20 +60,23 @@ export class LoginComponent implements OnInit { //clase componente que puede ser
           },
         });
 
-        this.loginService.login(usuario.trim(), password.trim()).subscribe( resp => {
-        console.log(resp);
-        if(this.loginService.listaAmigosInstancia.length>0){
-          Swal.close();
-          this.router.navigate(['/mostrarAmigos']); //la lista de amigos se va ver gracias al servicio LoginService que amigosComponent tambien consume n_n
-          
-        }
-        else{
-          this.mensaje_swal_y_habilitar_boton("Sin amigos",
-              "La cuenta no tiene amigos asignados, favor de indicarle al administrador que haga el llenado por base de datos y vuelva a intentarlo",
-              "info",
-              "Ok",
-              $event); 
-        }
+        this.loginService.login(usuario.trim(), password.trim()).subscribe( resp_login => {
+          console.log(resp_login);
+          //Si entra aquí es porque la sesión fue exitosa, ahora hay que consumir la descarga de amigos
+          this.loginService.descargar_lista_amigos().subscribe( resp_descarga => {
+            if(this.loginService.listaAmigosInstancia.length>0){
+              Swal.close();
+              this.router.navigate(['/mostrarAmigos']); //la lista de amigos se va ver gracias al servicio LoginService que amigosComponent tambien consume n_n
+              
+            }
+            else{
+              this.mensaje_swal_y_habilitar_boton("Sin amigos",
+                  "La cuenta no tiene amigos asignados, favor de indicarle al administrador que haga el llenado por base de datos y vuelva a intentarlo",
+                  "info",
+                  "Ok",
+                  $event); 
+            }
+          });
         }, 
         (errorSever) => {
             console.log('Servidor respondio con error :v');
