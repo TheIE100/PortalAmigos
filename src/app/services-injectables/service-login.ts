@@ -25,7 +25,7 @@ export class LoginService  {
           console.log("AQUI SE EJECUTA!!!!");
           var url = `${GlobalVariables.BASE_API_URL}/api/Amigos/DescargaAmigos`;
           var cabecera  = new HttpHeaders({
-            'Content-Type': 'application/text',
+            'Content-Type': 'application/json',
             'Accept': '*/*',
             'Authorization': `Bearer ${this.lsObservador.getTokenUsuario()}`
             });
@@ -33,10 +33,13 @@ export class LoginService  {
             //console.log(this.lsObservador.getTokenUsuario());
           return this.httpClient.get(url,{ headers: cabecera }).pipe(
           map(  resp  => {
+            console.log(resp);
                var respuesta_instancia = resp as DescargaAmigosResponse;
                 console.log(`Esta fue la respuesta ${JSON.stringify(respuesta_instancia)}`);
+                console.log(respuesta_instancia);
                 if(respuesta_instancia.Estatus == 200){
                     this.listaAmigosInstancia = respuesta_instancia.ListaAmigos;
+                    console.log(this.listaAmigosInstancia);
                     if(  this.listaAmigosInstancia.length == 0){
                       this.lsObservador.setSesionActiva(false);
                       this.lsObservador.setTokenUsuario("");
@@ -88,6 +91,7 @@ export class LoginService  {
     });
    return this.httpClient.post(url, body, { headers: cabecera }).pipe(
    map( resp => {
+     //si el login es exitoso, entra a este flujo, en caso contrario lanza una excepción
          this.lsObservador.setSesionActiva(true);
          this.lsObservador.setTokenUsuario(resp['access_token']);
           return resp;
