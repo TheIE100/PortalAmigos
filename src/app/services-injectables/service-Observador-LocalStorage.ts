@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class ServiceLocalStorage { //Servicio de observador del objeto local storage para indicar cambios a componentes
- obsSesionActiva = new BehaviorSubject(this.getSesionActiva);
+ obsSesionActiva = new BehaviorSubject(this.getSesionActiva());
+
 
  setSesionActiva(valor) {
    this.obsSesionActiva.next(valor); //indica que el valor ha sido cambiado a los suscriptores
@@ -11,7 +12,8 @@ export class ServiceLocalStorage { //Servicio de observador del objeto local sto
  }
 
  getSesionActiva() {
-   return localStorage.getItem('UsuarioActivo');
+   console.log(`Usuario activo ${localStorage['UsuarioActivo']}`);
+   return localStorage["UsuarioActivo"]; //ojo, usar esta notacion es mejor que getItem porque previene el F5
  }
 
 
@@ -20,6 +22,6 @@ export class ServiceLocalStorage { //Servicio de observador del objeto local sto
  }
 
  getTokenUsuario(){
-    return localStorage.getItem("token");
+    return localStorage["token"];
  }
 }

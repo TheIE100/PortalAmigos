@@ -36,42 +36,13 @@ export class LoginService  {
             console.log(resp);
                var respuesta_instancia = resp as DescargaAmigosResponse;
                 console.log(`Esta fue la respuesta ${JSON.stringify(respuesta_instancia)}`);
-                console.log(respuesta_instancia);
                 if(respuesta_instancia.Estatus == 200){
                     this.listaAmigosInstancia = respuesta_instancia.ListaAmigos;
-                    console.log(this.listaAmigosInstancia);
                     if(  this.listaAmigosInstancia.length == 0){
                       this.lsObservador.setSesionActiva(false);
                       this.lsObservador.setTokenUsuario("");
                      }
                 }
-                //PENDIENTE, LLENAR EN LA BASE DE DATOS LOS AMIGOS CORRESPONDIENTES
-                /*
-                this.listaAmigosInstancia = [
-                  {
-                    Nombre: "Ale_gons",
-                    Imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/9c79bf4f-12fc-4c23-9b3d-da5aac423b18-profile_image-300x300.png",
-                    LigaTwitch: "https://www.twitch.tv/Ale_Gons"
-                  },
-                  {
-                    Nombre: "azieldavid0798",
-                    Imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/c334d19a-6645-468d-8597-46600537f8ce-profile_image-300x300.png",
-                    LigaTwitch: "https://www.twitch.tv/azieldavid0798"
-                  },
-                  {
-                    Nombre: "uziel4r53",
-                    Imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/7bbbbd8b-0cad-4dfb-ad94-99c4eb4ab26f-profile_image-300x300.png",
-                    LigaTwitch: "https://www.twitch.tv/uziel4r53"
-                  },
-                  {
-                    Nombre: "watertd12",
-                    Imagen: "https://static-cdn.jtvnw.net/jtv_user_pictures/60d81439-9c03-4b7b-b3bf-76781c5c74d2-profile_image-300x300.png",
-                    LigaTwitch: "https://www.twitch.tv/watertd12"
-                  }
-                ];
-                */
-          
-                //return resp;
               })
             );
 

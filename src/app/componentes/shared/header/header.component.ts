@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
     public lsObservador : ServiceLocalStorage) { 
     console.log("esta en el constructor :v");
 
-      lsObservador.obsSesionActiva.subscribe((valor) => {  //activando el patron observador (constructor solo se crea 1 vez), el valor cambia en el serviceLocalStorage
+      lsObservador.obsSesionActiva.subscribe((valor) => {  //activando el patron observador (constructor solo se crea 1 vez), el valor cambia en el serviceLocalStorage o si el usuario presiono F5
         this.usuarioConectado = (String(valor) == "true")  //¿El usuario está conectado? (esto cambia la variable y lo manda al html)
         console.log(`Observador actiVado de verificador usuarioConectado :D ${this.usuarioConectado} EN HEADER`);
         if(!this.usuarioConectado){
