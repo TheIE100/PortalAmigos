@@ -35,7 +35,7 @@
               <div class="panel panel-default">
                   <div class="panel-body">
                       <app-formulario-amigos *ngIf="banderaFormularioAlta" [formulario_alta]="true" (respuesta_componente_hijo)="usuario_finalizo_formulario($event)"></app-formulario-amigos> <!--Utilizando componente-->
-                      <!--La edicion de amigo hay que ver como la metemos en el ngfor para mandar ahi el modelo y bo hacer la consulta en componente hijo..-->
+                      <!--La edicion de amigo hay que ver como la metemos en el ngfor para mandar ahi el modelo y no hacer la consulta en componente hijo..-->
                       <app-formulario-amigos *ngIf="!banderaFormularioAlta" [formulario_alta]="false" (respuesta_componente_hijo)="usuario_finalizo_formulario($event)"></app-formulario-amigos> <!--Utilizando componente-->
                   </div>
               </div>
