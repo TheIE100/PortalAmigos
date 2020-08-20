@@ -1,13 +1,45 @@
-    <center><h2>{{tituloCabecera}}</h2></center>
+    <center><h2 class="w3-animate-zoom">{{tituloCabecera}}</h2></center>
+    <br>
+    <center>
+      <button type="button" class="btn btn-info w3-animate-left" (click)="mostrar_formulario_alta()">Agrega amigo</button>
+    </center>
     <div class="card-container">
       <div *ngFor="let amigo of amigos">
-      <div class="w3-card-4 w3-margin-left w3-margin-bottom">
+      <div class="w3-card-4 w3-margin-left w3-margin-bottom w3-animate-left">
         <center><img  src="{{amigo.Imagen}}" alt="Card image"></center>
           <div class="w3-container w3-center">
             <h4 class="card-title">{{ amigo.Nombre }}</h4>
             <a href="{{amigo.LigaTwitch}}" target="_blank" class="btn btn-primary" style="color:white;">Visita twitch</a>
+          <br>
+          <br>
+          <button type="button" class="btn btn-warning w3-animate-left" (click)="mostrar_formulario_edicion(amigo.Nombre)">Editar amigo</button> | <button type="button" class="btn btn-danger w3-animate-left">Quitar amigo</button>
+          <br>
+          <br>
       </div>
       <div class="col-md-2"></div>
     </div>
 
-    
+<div id="modalFormulario" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true" class="modal fade" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+          <div class="modal-header">
+              <div class="modal-title">
+                  <h4 class="alignTextoCenter"><strong>{{tituloCabeceraModal}}</strong></h4>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+          </div>
+
+          <div class="modal-body">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <app-formulario-amigos *ngIf="banderaFormularioAlta" [formulario_alta]="true" (respuesta_componente_hijo)="usuario_finalizo_formulario($event)"></app-formulario-amigos> <!--Utilizando componente-->
+                      <!--La edicion de amigo hay que ver como la metemos en el ngfor para mandar ahi el modelo y bo hacer la consulta en componente hijo..-->
+                      <app-formulario-amigos *ngIf="!banderaFormularioAlta" [formulario_alta]="false" (respuesta_componente_hijo)="usuario_finalizo_formulario($event)"></app-formulario-amigos> <!--Utilizando componente-->
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

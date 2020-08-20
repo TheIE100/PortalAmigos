@@ -20,12 +20,13 @@ import { AppComponent } from './app.component';
 import { AmigosComponent } from './componentes/amigos/amigos.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { HeaderComponent } from './componentes/shared/header/header.component';
+import { FormularioAmigosComponent } from './componentes/shared/formulario-amigos/formulario-amigos.component';
 
 @NgModule({ //decorador general padre de toda la app web
   declarations: //todo aque componente que se incluya en la lista de
   // declaraciones y bootstrap, podrán usarse en cualquier lado de la app web.
   [ 
-    AppComponent, AmigosComponent, LoginComponent, HeaderComponent
+    AppComponent, AmigosComponent, LoginComponent, HeaderComponent, FormularioAmigosComponent
   ],
   imports: [
     BrowserModule,
