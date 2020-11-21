@@ -12,7 +12,7 @@
             <a href="{{amigo.LigaTwitch}}" target="_blank" class="btn btn-primary" style="color:white;">Visita twitch</a>
           <br>
           <br>
-          <button type="button" class="btn btn-warning w3-animate-left" (click)="mostrar_formulario_edicion(amigo.Nombre)">Editar amigo</button> | <button type="button" class="btn btn-danger w3-animate-left">Quitar amigo</button>
+          <button type="button" class="btn btn-warning w3-animate-left" (click)="mostrar_formulario_edicion(amigo)">Editar amigo</button> | <button type="button" (click)="borrar_amigo(amigo.Nombre)"  class="btn btn-danger w3-animate-left">Quitar amigo</button>
           <br>
           <br>
       </div>
@@ -34,9 +34,10 @@
           <div class="modal-body">
               <div class="panel panel-default">
                   <div class="panel-body">
-                      <app-formulario-amigos *ngIf="banderaFormularioAlta" [formulario_alta]="true" (respuesta_componente_hijo)="usuario_finalizo_formulario($event)"></app-formulario-amigos> <!--Utilizando componente-->
-                      <!--La edicion de amigo hay que ver como la metemos en el ngfor para mandar ahi el modelo y no hacer la consulta en componente hijo..-->
-                      <app-formulario-amigos *ngIf="!banderaFormularioAlta" [formulario_alta]="false" (respuesta_componente_hijo)="usuario_finalizo_formulario($event)"></app-formulario-amigos> <!--Utilizando componente-->
+                      <app-formulario-amigos  
+                      [formulario_alta]="banderaFormularioAlta" 
+                      [esqueleto_amigo]="esqueleto_amigo"
+                      (respuesta_componente_hijo)="usuario_finalizo_formulario($event)"></app-formulario-amigos> <!--Utilizando componente-->
                   </div>
               </div>
           </div>

@@ -1,1 +1,27 @@
-<p>formulario-amigos works! Alta de amigos {{formulario_alta}}</p>
+<div class="container marginT30">
+
+    <form autocomplete="off" [formGroup]="formAmigo">
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="col-form-label" >Nombre amigo:</label>
+                    <input type="text" class="form-control" placeholder=""  formControlName="nombreAmigo" [class.is-invalid]="validar_campo_nombre" [(ngModel)]="esqueleto_amigo.nombre" name="nombreA">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" >Liga Twitch:</label>
+                    <input type="text" class="form-control" placeholder=""  formControlName="ligaTwitchAmigo" [class.is-invalid]="validar_campo_liga_twitch" [(ngModel)]="esqueleto_amigo.ligaTwitch" name="ligaTwitchA">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" >Liga imagen:</label>
+                    <input type="text" class="form-control" placeholder=""  formControlName="imagenAmigo" [class.is-invalid]="validar_campo_imagen" [(ngModel)]="esqueleto_amigo.imagen" name="imagenA">
+                </div>
+                <input type="text" class="form-control" placeholder=""  formControlName="idAmigo" [(ngModel)]="esqueleto_amigo.idAmigo" name="idAmigoA" hidden>
+            </div>
+
+        </div>
+        <center>
+            <button (click)="guardar($event)" class="btn btn-primary btn-lg">Guardar</button>
+        </center>
+    </form>
+</div>

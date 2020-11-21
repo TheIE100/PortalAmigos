@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http'; //modulo para poder con
 import { LoginService } from './services-injectables/service-login';
 import {PrivilegesGuard } from './services-injectables/service-PrivilegesGuard';
 import { ServiceBloquearNavAtrasService}  from  './services-injectables/service-bloquear-nav-atras.service';
+import { FormularioAmigosService}  from  './services-injectables/formulario-amigos.service';
+
+
 
 //FIN DE IMPORTACONES MANUELES PROYECXTOS
 
@@ -35,7 +38,7 @@ import { FormularioAmigosComponent } from './componentes/shared/formulario-amigo
     APP_ROUTING,
     HttpClientModule
   ],
-  providers: [LoginService,PrivilegesGuard, ServiceBloquearNavAtrasService ],  //aqui van los servicios web o servicios locales (si no, no jalan)
+  providers: [LoginService,PrivilegesGuard, ServiceBloquearNavAtrasService,FormularioAmigosService ],  //aqui van los servicios web o servicios locales (si no, no jalan)
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA] //PARA QUE PERMITA UTILIZAR CIERTOS FORMATOS DE HTML EN ANGULAR..
 })
